@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <button type="button" id="back-btn" class="back-btn is-hidden" aria-label="Back to home">
+        ←
+      </button>
+      <h1 id="topbar-title">Login</h1>
+    </header>
+
+    <main id="login-view" class="login-wrap">
+      <section class="login-shell">
+        <div class="login-hero">
+          <div class="login-badge">✦</div>
+          <div class="login-brand-copy">
+            <p class="login-eyebrow">Groupmate</p>
+            <h1 class="login-hero h2">Collaborate with your groups in one workspace</h1>
+          </div>
+        </div>
+
+        <div class="login-card">
+          <div class="login-card-header">
+            <p class="login-card-kicker">WELCOME BACK</p>
+            <h2>Sign in to continue</h2>
+            <p class="login-card-text">Use your account to open your groups and keep your activity history on this device.</p>
+          </div>
+
+          <form id="login-form" class="login-form">
+            <div class="login-field">
+              <label class="login-label">Display name</label>
+              <div class="login-row">
+                <input
+                  type="text"
+                  id="login-name-input"
+                  name="name"
+                  placeholder="Enter your name"
+                  autocomplete="name"
+                  required
+                />
+                <button type="button" id="login-copy-id" class="login-code-chip" aria-label="Copy user code">
+                  <span class="copy-icon">📋</span>
+                  <span id="login-user-code">U-LOCAL</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="login-field">
+              <label class="login-label">Email</label>
+              <input
+                type="email"
+                id="login-email-input"
+                name="email"
+                placeholder="Enter your @lamduan.mfu.ac.th email"
+                autocomplete="email"
+                pattern="^[^@\s]+@lamduan\.mfu\.ac\.th$"
+                title="Use your @lamduan.mfu.ac.th email"
+                required
+              />
+              <p class="login-email-hint">Use only @lamduan.mfu.ac.th email</p>
+            </div>
+
+            <div class="login-field">
+              <label class="login-label">Password</label>
+              <div class="login-password-wrap">
+                <input
+                  type="password"
+                  id="login-password-input"
+                  name="password"
+                  placeholder="Enter your password"
+                  autocomplete="current-password"
+                  required
+                />
+                <button type="button" id="login-password-toggle" class="login-password-toggle" aria-label="Show password">Show</button>
+              </div>
+            </div>
+
+            <p id="login-secondary-message" class="login-secondary-message" role="status" aria-live="polite"></p>
+
+            <button type="submit" class="login-submit-btn">Sign In</button>
+          </form>
+
+          <div class="login-links">
+            <p>
+              Don't have an account?
+              <button type="button" id="login-signup-link" class="login-inline-btn">Sign Up</button>
+            </p>
+            <p>
+              <button type="button" id="login-forgot-link" class="login-inline-btn login-forgot-link">Forget password?</button>
+            </p>
+          </div>
+
+          <p class="login-footer-note">Mae Fah Luang University • Group coordination workspace</p>
+        </div>
+      </section>
+    </main>
+
+    <main id="home-view" class="home-wrap is-hidden">
+      <section class="top-actions" aria-label="Account actions">
+        <div class="welcome-block">
+          <h2 id="welcome-title">Welcome, Alice</h2>
+          <button type="button" id="logout-btn" class="neutral-btn">Logout</button>
+        </div>
+
+        <div class="right-actions">
+          <button type="button" id="copy-id" class="code-chip" aria-label="Copy user code">
+            <span class="copy-icon" aria-hidden="true">📋</span>
+            <span id="user-code">U-ZHJCXP</span>
+          </button>
+          <button type="button" id="create-group-btn" class="accent-btn">+ Create Group</button>
+        </div>
+      </section>
+
+      <section class="groups" aria-labelledby="groups-title">
+        <h3 id="groups-title">Your Groups</h3>
+
+        <ul class="group-list">
+          <li>
+            <button
+              type="button"
+              class="group-item group-link"
+              data-group-name="Math"
+              data-group-id="g-1772521498478"
+              data-members="1 members"
+            >
+              <span class="group-name">Math</span>
+              <span class="group-members">1 members</span>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="group-item group-link"
+              data-group-name="g-123"
+              data-group-id="g-123"
+              data-members="3 members"
+            >
+              <span class="group-name">g-123</span>
+              <span class="group-members">3 members</span>
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="group-item group-link"
+              data-group-name="Project Alpha"
+              data-group-id="g-projectalpha"
+              data-members="2 members"
+            >
+              <span class="group-name">Project Alpha</span>
+              <span class="group-members">2 members</span>
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+
+      <nav class="bottom-nav" aria-label="Quick links">
+        <button type="button" id="calendar-btn" class="pill-btn calendar">Calendar</button>
+        <button type="button" id="join-group-btn" class="pill-btn join">Join Group</button>
+        <button type="button" id="notes-btn" class="pill-btn notes">Notes</button>
+      </nav>
+    </main>
+
+    <main id="chat-view" class="chat-wrap is-hidden">
+      <section class="chat-header-section">
+        <h2 id="chat-group-name">Math</h2>
+
+        <div class="group-meta-row">
+          <p class="group-id-line">
+            <strong>Group ID:</strong>
+            <span id="chat-group-id">g-1772521498478</span>
+          </p>
+          <button type="button" id="copy-group-id-btn" class="meta-btn">Copy</button>
+          <button type="button" id="members-btn" class="meta-btn">Members</button>
+        </div>
+
+        <form id="add-member-form" class="add-member-form">
+          <input
+            type="text"
+            id="member-id-input"
+            name="memberId"
+            placeholder="Member ID (id)"
+            required
+          />
+          <input
+            type="text"
+            id="member-name-input"
+            name="memberName"
+            placeholder="Member name"
+            required
+          />
+          <button type="submit" class="meta-btn add-btn">Add</button>
+        </form>
+      </section>
+
+      <section id="chat-messages" class="chat-messages" aria-label="Chat messages">
+        <article class="chat-bubble incoming" data-message-id="seed-1" data-author="Alice">
+          <p class="bubble-name">Alice</p>
+          <p class="bubble-text">hey to day have lap</p>
+          <div class="bubble-meta-row">
+            <p class="bubble-meta">14:05:13</p>
+            <div class="bubble-reactions" aria-label="Message reactions">
+              <button type="button" class="reaction-btn green-heart" aria-label="Mark green heart">
+                🤍
+              </button>
+              <button
+                type="button"
+                class="reaction-btn red-heart"
+                data-note-toggle="true"
+                aria-label="Save to notes"
+              >
+                🤍
+              </button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <form id="message-form" class="message-form">
+        <input
+          type="text"
+          id="chat-input"
+          name="message"
+          placeholder="Type a message..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="send-btn">Send</button>
+      </form>
+
+      <button type="button" id="leave-group-btn" class="leave-group-btn">Leave the group</button>
+    </main>
+
+    <main id="join-view" class="join-wrap is-hidden">
+      <form id="join-form" class="join-form">
+        <input
+          type="text"
+          id="join-group-id-input"
+          name="groupId"
+          placeholder="Enter Group ID (e.g. g-123)"
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="join-submit-btn">Join Group</button>
+      </form>
+      <p id="join-message" class="join-message" role="status" aria-live="polite"></p>
+    </main>
+
+    <main id="notes-view" class="notes-wrap is-hidden">
+      <section class="notes-header-row">
+        <h2>
+          <span class="notes-heart" aria-hidden="true">❤️</span>
+          Notes
+        </h2>
+      </section>
+      <section id="notes-list" class="notes-list" aria-label="Saved notes"></section>
+    </main>
+
+    <main id="calendar-view" class="calendar-wrap is-hidden">
+      <section class="calendar-header-row">
+        <h2>
+          <span class="calendar-heart" aria-hidden="true">💚</span>
+          Calendar
+        </h2>
+      </section>
+      <section id="calendar-list" class="calendar-list" aria-label="Saved calendar items"></section>
+    </main>
+
+    <div id="signup-modal" class="signup-modal-overlay is-hidden" role="dialog" aria-modal="true" aria-labelledby="signup-modal-title">
+      <div class="signup-modal">
+        <div class="signup-modal-header">
+          <h2 id="signup-modal-title">Sign Up</h2>
+          <button type="button" id="signup-modal-close" class="signup-modal-close" aria-label="Close">&times;</button>
+        </div>
+        <form id="signup-modal-form" class="signup-modal-form">
+          <label for="signup-name-input">Display name</label>
+          <input
+            type="text"
+            id="signup-name-input"
+            name="signupName"
+            placeholder="Enter your name"
+            autocomplete="name"
+            required
+          />
+          <label for="signup-email-input">Email (@lamduan.mfu.ac.th only)</label>
+          <input
+            type="email"
+            id="signup-email-input"
+            name="signupEmail"
+            placeholder="yourname@lamduan.mfu.ac.th"
+            autocomplete="email"
+            pattern="^[^@\s]+@lamduan\.mfu\.ac\.th$"
+            required
+          />
+          <label for="signup-password-input">Password</label>
+          <input
+            type="password"
+            id="signup-password-input"
+            name="signupPassword"
+            placeholder="Set your password"
+            autocomplete="new-password"
+            required
+          />
+          <p id="signup-modal-message" role="status" aria-live="polite"></p>
+          <button type="submit" class="login-submit-btn">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="forgot-modal" class="forgot-modal-overlay is-hidden" role="dialog" aria-modal="true" aria-labelledby="forgot-modal-title">
+      <div class="forgot-modal">
+        <div class="forgot-modal-header">
+          <h2 id="forgot-modal-title">Forget password</h2>
+          <button type="button" id="forgot-modal-close" class="forgot-modal-close" aria-label="Close">&times;</button>
+        </div>
+        <form id="forgot-modal-form" class="forgot-modal-form">
+          <label for="forgot-email-input">Email (@lamduan.mfu.ac.th only)</label>
+          <input
+            type="email"
+            id="forgot-email-input"
+            name="forgotEmail"
+            placeholder="yourname@lamduan.mfu.ac.th"
+            autocomplete="email"
+            pattern="^[^@\s]+@lamduan\.mfu\.ac\.th$"
+            required
+          />
+          <p id="forgot-modal-message" role="status" aria-live="polite"></p>
+          <button type="submit" class="login-submit-btn">Sent password to Email</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Members Modal -->
+    <div id="members-modal" class="members-modal-overlay is-hidden" role="dialog" aria-modal="true" aria-labelledby="members-modal-title">
+      <div class="members-modal">
+        <div class="members-modal-header">
+          <h2 id="members-modal-title">Members</h2>
+          <button type="button" id="members-modal-close" class="members-modal-close" aria-label="Close">&times;</button>
+        </div>
+        <ul id="members-modal-list" class="members-modal-list"></ul>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
